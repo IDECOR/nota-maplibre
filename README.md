@@ -1,2 +1,2 @@
-# nota-maplibre
-Código de la nota introductoria a MapLibre
+# notas MapLibre
+Código de las notas referentes a MapLibre
