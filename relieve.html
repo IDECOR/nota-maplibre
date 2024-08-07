@@ -32,6 +32,13 @@
             tileSize: 256,
             maxzoom: 22
           },
+          cobertura_suelo_wms: {
+            type: "raster",
+            tiles: ["https://idecor-ws.mapascordoba.gob.ar/geoserver/idecor/cobertura_uso_2022_2023/wms?bbox={bbox-epsg-3857}&format=image/png&service=WMS&version=1.1.1&request=GetMap&srs=EPSG:3857&transparent=true&width=256&height=256&layers=cobertura_uso_2022_2023"],
+            tileSize: 256,
+            maxzoom: 22,
+            attribution: "IDECOR"
+          },
           parcelas: {
             type: "vector",
             tiles: [
@@ -52,10 +59,17 @@
           }
         },
         layers: [
+          // {
+          //   id: "satellite",
+          //   type: "raster",
+          //   source: "satellite"
+          // },
           {
-            id: "satellite",
+            id: "cobertura_suelo",
             type: "raster",
-            source: "satellite"
+            source: "cobertura_suelo_wms",
+            "source-layer": "cobertura_suelo",
+            paint: {}
           },
           {
             id: "parcelas_bordes",
@@ -87,8 +101,8 @@
             id: "hills",
             type: "hillshade",
             source: "hillshadeSource",
-            layout: { visibility: "visible" },
-            paint: { "hillshade-shadow-color": "#473B24" }
+            layout: {visibility: "visible"},
+            paint: {"hillshade-shadow-color": "#473B24"}
           }
         ],
         terrain: {
